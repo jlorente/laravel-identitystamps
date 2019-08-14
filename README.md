@@ -108,7 +108,7 @@ To enable identity stamps for a model, use the Jlorente\IdentityStamp\Eloquent\I
 ```php
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Jlorente\IdentityStamp\Eloquent\IdentityStamps;
+use Jlorente\Laravel\IdentityStamp\Database\Eloquent\IdentityStamps;
 
 class Product extends Model
 {
@@ -127,7 +127,7 @@ constants on the model.
 ```php
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Jlorente\IdentityStamp\Eloquent\IdentityStamps;
+use Jlorente\Laravel\IdentityStamp\Database\Eloquent\IdentityStamps;
 
 class Product extends Model
 {
@@ -146,7 +146,7 @@ resolve the identity stamp fields.
 ```php
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Jlorente\IdentityStamp\Eloquent\IdentityStamps;
+use Jlorente\Laravel\IdentityStamp\Database\Eloquent\IdentityStamps;
 
 class Product extends Model
 {
@@ -181,7 +181,7 @@ fields.
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
-use Jlorente\IdentityStamp\Eloquent\IdentityStamps;
+use Jlorente\Laravel\IdentityStamp\Database\Eloquent\IdentityStamps;
 
 class Product extends Model
 {
