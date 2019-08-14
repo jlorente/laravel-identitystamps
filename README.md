@@ -2,6 +2,9 @@ Laravel IdentityStamps Plugin
 =============================
 A Laravel plugin to register and keep control of users who make creations, updates and deletions of models.
 
+With this plugin, you will manage automatically the control fields "created_by", "updated_by" and "deleted_by" that 
+will store the identity of the users that manipulate the models.
+
 ## Installation
 
 The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
@@ -25,7 +28,7 @@ to the ```require``` section of your `composer.json` file.
 
 ## Configuration
 
-1. Register the ServiceProvider in your config/app.php service provider list.
+Register the ServiceProvider in your config/app.php service provider list.
 
 config/app.php
 ```php
@@ -42,7 +45,7 @@ return [
 
 ### On Migrations
 
-You can use the Blueprint method identityStamps() to add add nullable "created_by" 
+You can use the Blueprint method identityStamps() to add nullable "created_by" 
 and "updated_by" UNSIGNED INTEGER equivalent columns. Of course, you can create 
 the columns by yourself with a custom name and type and then configure the Model 
 class with these names, but remember that the type should be the same as the type 
@@ -170,7 +173,7 @@ class Product extends Model
 ### Using custom identity id to be stored in the identity fields
 
 By default, the trait will use Laravel's Auth::id() method to retrieve the id 
-that will be stored on the identityStamp fields. Feel free to override the 
+that will be stored on the identity stamp fields. Feel free to override the 
 method getIdentityStampValue() to return the value that you want to store in the 
 fields.
 
