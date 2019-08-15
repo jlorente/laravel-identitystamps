@@ -19,9 +19,8 @@
 
 namespace Jlorente\Laravel\IdentityStamp;
 
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\DB;
-use Jlorente\Laravel\IdentityStamp\Database\Schema\Blueprint;
 
 /**
  * Class IdentityStampServiceProvider.
@@ -39,8 +38,13 @@ class IdentityStampServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        DB::getSchemaBuilder()->blueprintResolver(function($table, $callback) {
-            return new Blueprint($table, $callback);
+        Blueprint::macro('identityStamps', function() {
+            $this->unsignedInteger('created_by')->nullable();
+            $this->unsignedInteger('updated_by')->nullable();
+        });
+
+        Blueprint::macro('softDeletesIdentityStamps', function() {
+            $this->unsignedInteger('deleted_by')->nullable();
         });
     }
 

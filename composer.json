@@ -6,6 +6,7 @@
         "jlorente",
         "laravel",
         "identity",
+        "auditable",
         "identitystamp",
         "created_by",
         "updated_by",

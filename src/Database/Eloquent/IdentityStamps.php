@@ -14,21 +14,11 @@ trait IdentityStamps
 {
 
     /**
-     * Variable to control the event loaded method.
-     * 
-     * @var bool 
-     */
-    protected static $identityStampsEventsLoaded = false;
-
-    /**
      * Method to boot the trait behaviors.
      */
     public static function bootIdentityStamps()
     {
-        if (static::$identityStampsEventsLoaded === false) {
-            static::attachIdentityStampsEvents();
-            static::$identityStampsEventsLoaded = true;
-        }
+        static::attachIdentityStampsEvents();
     }
 
     /**
@@ -47,7 +37,7 @@ trait IdentityStamps
 
         if (array_search(SoftDeletes::class, class_uses_recursive(static::class)) !== false) {
             static::deleted(function($model) {
-                $model->updateSoftDeletesIdentityStamps();
+                $model->touchSoftDeletesIdentityStamps();
             });
         }
     }
@@ -104,7 +94,7 @@ trait IdentityStamps
 
         $identity = $this->getIdentityStampValue();
 
-        $deletedBy = $this->getUpdatedByColumn();
+        $deletedBy = $this->getDeletedByColumn();
         $this->{$deletedBy} = $identity;
     }
 
@@ -121,7 +111,7 @@ trait IdentityStamps
 
         $this->updateSoftDeletesIdentityStamps();
 
-        $deletedBy = $this->getCreatedByColumn();
+        $deletedBy = $this->getDeletedByColumn();
 
         $this->update([
             $deletedBy => $this->{$deletedBy}
